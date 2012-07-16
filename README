@@ -1,0 +1,82 @@
+Ants in a Maze 
+
+Andrew Faraday's celular automata prototype
+
+A nice little saturday project, a maze is a 2 dimensional grid of 0 or 1, 0 being a passable space and 1 being an inpassable one. On this grid you can place ants, who explore the space until they've been to all available spaces. There are 5 programmed ant behaviours:
+
+DumbAnt(D): Simply chooses one of the available spaces and moves to it.
+LessDumbAnt(L): Behaves in the same way as the dumb ant, only it won't go back to it's previous position unless it's at a dead end.
+AlanAnt(S): Named after Alan Faraday, who suggested the logic, the Alan ant won't go back on it's steps, and will remember when it's been in a dead-end and not take that route again.
+AndrewAnt(J): Named after Andrew Faraday, the Andrew ant won't go back on it's steps, it remembers where it has been and doesn't consider previously visited spaces an option. If it sees no options it will select the space it has visited least times. Based on probability, it will probably head towards new ground.
+CleverAnt(C): The Clever ant behaves in the same way as the Alan ant, only it also doesn't consider previously visited spaces an option. When it see's no options it will back-track to the last space where it detected more than one option.
+
+To use:
+Download or clone from github
+use ruby to run any of the files begining map-* (e.g. `ruby map-first.rb`)
+
+You might want to edit, or duplicate and modify one of the map-* files to make an ant run of your own, here's what you need to know:
+
+# the file must start with this, it loads all the shared code to make the ant-run work!!!
+require 'shared'
+
+# You can describe the grid explicitly like this:
+
+maze = GridArray.new([
+  [0,1,0,0,0,0,0,0,0],
+  [0,1,0,0,1,0,1,0,0],
+  [0,1,0,0,1,0,1,0,0],
+  [0,1,1,1,1,0,1,1,0],
+  [0,1,0,0,0,0,0,1,0],
+  [0,1,1,1,1,1,0,1,0],
+  [0,0,0,0,0,0,0,1,0],
+])
+
+# You can get the code for an empty grid by calling this in irb and then copying and pasting the code into your file.
+
+GridArray.generate_empty(10, 10).to_code
+# The two arguments are the size of your empty grid
+
+# or generate one randomly
+maze = GridArray.generate_random(10, 10, 5)
+# The first two arguments are your dimensions again
+# the third is the probability that each space will be blocked, so here 1 in 5 spaces will be blocked.
+
+# Next, add some ants
+
+generate_ants(0, 0)
+# This will generate 1 of each kind of ant at slot 10, 10 
+
+generate_ants(10, 10, 4)
+# This will generate 4 of each kind of ant at slot 10, 10
+
+# You can also choose to generate a single kind of ant with the same arguments e.g.
+CleverAnt.generate(0, 0)
+DumbAnt.generate(0, 0)
+
+# All that remains is to sit back and watch the fireworks
+
+run_test(maze,0.2)
+# This will show you the maze being explored by all the ants you've created. And display a few stats when they've all finished exploring the space.
+# The second argument is the space of time (in seconds) between moves, when there aren't many ants this will be neccessary for you to watch proceedings. With a large number of ants and/or a large grid, you may find that the processing time makes it easily visible with this argument at 0.
+
+# You can also, to save some waiting, set a completion percentage, when this percentage of ants have finished exploring the test will finish and the stats will be shown.
+# Set this argument like so
+run_test(maze,0.1, 60)
+
+# 60% is a good number when used alongside the generate_ants command, because it means you won't have to wait for any of the DumbAnts or LessDumbAnts to finish.
+
+
+Above all, enjoy! It was made as a bit of fun and a geeky little thought exercise, and that's what it is. Feel free to comment or contribute. 
+
+Get in touch with andrewfaraday@hotmail.co.uk
+
+
+#############################################
+############ Here Be Dragons ################
+#############################################
+
+Please note that a great many ants or a very large grid will put a heavy strain on your computer. For the movement behaviour to work they store some large arrays of visited and unvisited positions. I find that a grid of 20x20 and 40 ants makes about the limit. 
+
+If you see the view starting to glitch as the CPU load becomes too heavy I suggest you quit the script using ctrl+c and edit the map-* file to reduce the amount of ants or the size of the maze.
+
+
