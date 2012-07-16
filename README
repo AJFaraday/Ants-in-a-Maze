@@ -66,7 +66,7 @@ run_test(maze,0.1, 60)
 # 60% is a good number when used alongside the generate_ants command, because it means you won't have to wait for any of the DumbAnts or LessDumbAnts to finish.
 
 
-Above all, enjoy! It was made as a bit of fun and a geeky little thought exercise, and that's what it is. Feel free to comment or contribute. 
+
 
 Get in touch with andrewfaraday@hotmail.co.uk
 
@@ -78,5 +78,21 @@ Get in touch with andrewfaraday@hotmail.co.uk
 Please note that a great many ants or a very large grid will put a heavy strain on your computer. For the movement behaviour to work they store some large arrays of visited and unvisited positions. I find that a grid of 20x20 and 40 ants makes about the limit. 
 
 If you see the view starting to glitch as the CPU load becomes too heavy I suggest you quit the script using ctrl+c and edit the map-* file to reduce the amount of ants or the size of the maze.
+
+
++------------------+
+|   #              |
+|  D# #############|
+|   #       L      |
+| ###      S       |
+| # J ###### ##### |
+| # ##  #        # |
+| # #   #  ##### # |
+| # # ######  #  # |
+| # #       #  # # |
+| # #### #  #C#  # |
+| # # # # # #  # # |
+|           #      |
++------------------+
 
 
