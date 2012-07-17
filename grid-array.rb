@@ -45,10 +45,10 @@ class GridArray < Array
 
   def options_from(c, r)
     adjacent = [
-      [(c-1),r], 
+      [c,(r+1)], 
       [(c+1),r],
       [c,(r-1)],
-      [c,(r+1)]
+      [(c-1),r]
     ]
     options = []
     adjacent.each do |slot|

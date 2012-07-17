@@ -17,4 +17,4 @@ maze = GridArray.new([
 
 generate_ants(9,6)
 
-run_test(maze,0.1)
+run_test(maze,0)

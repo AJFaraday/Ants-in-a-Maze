@@ -47,7 +47,7 @@ class AlanAnt < Ant
   end
 
   def set_attributes
-    self.character = 'S'
+    self.character = 'A'
     self.blacklist =[]
     self.path = []
   end

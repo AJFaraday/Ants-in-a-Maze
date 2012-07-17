@@ -1,15 +1,17 @@
 require 'grid-array'
 require 'ant'
 require 'clever-ant'
+require 'sequence-ant'
 require 'dumb-ants'
 require 'named-ants'
 
 def generate_ants(c=0,r=0,multiple=1)
-    AndrewAnt.generate(c,r,multiple)
-    AlanAnt.generate(c,r,multiple)
-    DumbAnt.generate(c,r,multiple)
-    LessDumbAnt.generate(c,r,multiple)
-    CleverAnt.generate(c,r,multiple)
+  AndrewAnt.generate(c,r,multiple)
+  AlanAnt.generate(c,r,multiple)
+  DumbAnt.generate(c,r,multiple)
+  LessDumbAnt.generate(c,r,multiple)
+  CleverAnt.generate(c,r,multiple)
+  SequenceAnt.generate(c,r,multiple)
 end
  
 # percent is the percentage of ants who have to have explored every space before the script ends
@@ -44,7 +46,7 @@ def show_final_result
     result << "All ants have explored everywhere.\r\n" 
   end
   result << "There were #{$slots} slots to explore.\r\n"
-  [DumbAnt,LessDumbAnt,AlanAnt,AndrewAnt,CleverAnt].each do |klass|
+  [DumbAnt,LessDumbAnt,AlanAnt,AndrewAnt,CleverAnt,SequenceAnt].each do |klass|
     ants = klass.all
     unless ants.empty?
       iterations = ants.collect{|ant| ant.finished_at}.compact
