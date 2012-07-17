@@ -2,13 +2,14 @@ Ants in a Maze
 
 Andrew Faraday's celular automata prototype
 
-A nice little saturday project, a maze is a 2 dimensional grid of 0 or 1, 0 being a passable space and 1 being an inpassable one. On this grid you can place ants, who explore the space until they've been to all available spaces. There are 5 programmed ant behaviours:
+A nice little saturday project, a maze is a 2 dimensional grid of 0 or 1, 0 being a passable space and 1 being an inpassable one. On this grid you can place ants, who explore the space until they've been to all available spaces. There are 6 programmed ant behaviours:
 
 DumbAnt(D): Simply chooses one of the available spaces and moves to it.
 LessDumbAnt(L): Behaves in the same way as the dumb ant, only it won't go back to it's previous position unless it's at a dead end.
-AlanAnt(S): Named after Alan Faraday, who suggested the logic, the Alan ant won't go back on it's steps, and will remember when it's been in a dead-end and not take that route again.
+AlanAnt(A): Named after Alan Faraday, who suggested the logic, the Alan ant won't go back on it's steps, and will remember when it's been in a dead-end and not take that route again.
 AndrewAnt(J): Named after Andrew Faraday, the Andrew ant won't go back on it's steps, it remembers where it has been and doesn't consider previously visited spaces an option. If it sees no options it will select the space it has visited least times. Based on probability, it will probably head towards new ground.
 CleverAnt(C): The Clever ant behaves in the same way as the Alan ant, only it also doesn't consider previously visited spaces an option. When it see's no options it will back-track to the last space where it detected more than one option.
+SequenceAnt(S): Behaves in exactly the same way as the clever ant, but will choose from it's options in the same sequence every time. It will always win on an empty grid!
 
 To use:
 Download or clone from github
